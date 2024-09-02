@@ -14,7 +14,27 @@
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Credenciales</ion-card-title>
+        <ion-card-subtitle>Login de acceso</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-input label="Usuario: " [(ngModel)]="user.username" labelPlacement="floating" [counter]="true" ></ion-input>
+
+        <ion-input id="custom-input"  [(ngModel)]="user.pass" type="password" label="Contraseña: " labelPlacement="floating" [counter]="true"
+          ></ion-input>
+
+        <ion-input id="custom-input" type="email" label="Email" labelPlacement="floating" [counter]="true"
+        ></ion-input>
+        <ion-button (click)="Validar()" [routerLink]="['/inicio']">Login</ion-button> 
+        <ion-item *ngIf="spinner">
+          
+          <mat-spinner></mat-spinner>
+
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>
