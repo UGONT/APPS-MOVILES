@@ -20,21 +20,12 @@
       </ion-card-header>
 
       <ion-card-content>
-        <ion-input label="Usuario: " [(ngModel)]="user.username" labelPlacement="floating" [counter]="true" ></ion-input>
 
-        <ion-input id="custom-input"  [(ngModel)]="user.pass" type="password" label="Contraseña: " labelPlacement="floating" [counter]="true"
-          ></ion-input>
-
-        <ion-input id="custom-input" type="email" label="Email" labelPlacement="floating" [counter]="true"
-        ></ion-input>
-        <ion-button (click)="Validar()" [routerLink]="['/inicio']">Login</ion-button> 
+        <ion-button [routerLink]="['/inicio']">Iniciar sesion</ion-button> 
+        <ion-button [routerLink]="['/registro']">Registrarse</ion-button> 
         <ion-button mat-fab extended>
-
+          hola
         </ion-button>
-        
-        <ion-item *ngIf="spinner">
-        </ion-item>
-        
       </ion-card-content>
     </ion-card>
   </div>
