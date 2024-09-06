@@ -16,8 +16,7 @@
   <div id="container">
     <ion-card>
       <ion-card-header>
-        <ion-card-title>Credenciales</ion-card-title>
-        <ion-card-subtitle>Login de acceso</ion-card-subtitle>
+        
       </ion-card-header>
 
       <ion-card-content>
@@ -29,10 +28,11 @@
         <ion-input id="custom-input" type="email" label="Email" labelPlacement="floating" [counter]="true"
         ></ion-input>
         <ion-button (click)="Validar()" [routerLink]="['/inicio']">Login</ion-button> 
-        <ion-item *ngIf="spinner">
-          
-          <mat-spinner></mat-spinner>
+        <ion-button mat-fab extended>
 
+        </ion-button>
+        
+        <ion-item *ngIf="spinner">
         </ion-item>
         
       </ion-card-content>

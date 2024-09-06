@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'inicio',
     loadChildren: () => import('./Access/inicio/inicio.module').then( m => m.InicioPageModule)
   },
+  {
+    path: 'registro',
+    loadChildren: () => import('./Access/registro/registro.module').then( m => m.RegistroPageModule)
+  },
 
 ];
 
