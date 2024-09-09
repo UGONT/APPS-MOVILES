@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'registro',
     loadChildren: () => import('./Access/registro/registro.module').then( m => m.RegistroPageModule)
   },
+  {
+    path: 'principal',
+    loadChildren: () => import('./Access/principal/principal.module').then( m => m.PrincipalPageModule)
+  },
 
 ];
 
