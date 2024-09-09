@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>registro</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,6 +13,32 @@
       <ion-title size="large">registro</ion-title>
     </ion-toolbar>
   </ion-header>
-  
+  <div id="container">
+    <ion-card>
+      <ion-card-header>
+        
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-input label="Correo: " [(ngModel)]="user.correo" labelPlacement="floating" [counter]="true" ></ion-input>
+
+        <ion-input id="custom-input"  [(ngModel)]="user.pass" type="password" label="Contraseña: " labelPlacement="floating" [counter]="true">          
+        </ion-input>
+        
+        <ion-input id="custom-input" type="password2" label="Repetir contraseña: " labelPlacement="floating" [counter]="true">          
+        </ion-input>
+
+        <ion-item>
+          <ion-button (click)="Validar()" [routerLink]="['/principal']"  size="default" color="success">Registrarse</ion-button> 
+        </ion-item>
+        
+        
+        
+        <ion-item *ngIf="spinner">
+        </ion-item>
+        
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
 

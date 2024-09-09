@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>inicio</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Inicio sesion</ion-title>  
   </ion-toolbar>
 </ion-header>
 
@@ -20,13 +23,21 @@
       <ion-card-content>
         <ion-input label="Usuario: " [(ngModel)]="user.username" labelPlacement="floating" [counter]="true" ></ion-input>
 
-        <ion-input id="custom-input"  [(ngModel)]="user.pass" type="password" label="Contraseña: " labelPlacement="floating" [counter]="true"
-          ></ion-input>
+        <ion-input id="custom-input"  [(ngModel)]="user.pass" type="password" label="Contraseña: " labelPlacement="floating" [counter]="true">          
+        </ion-input>
+        <ion-item>
+          <a href=""><p>Recuperar usuario o contraseña?</p></a>
+        </ion-item>
+        
+        <ion-item>
+          <ion-toggle justify="end">Recuerdame</ion-toggle><br /><br />
+        </ion-item>
 
-        <ion-button (click)="Validar()" [routerLink]="['/principal']">Login</ion-button> 
-        <ion-button mat-fab extended>
-
-        </ion-button>
+        <ion-item>
+          <ion-button (click)="Validar()" [routerLink]="['/principal']"  size="default">Ingresar</ion-button> 
+        </ion-item>
+        
+        
         
         <ion-item *ngIf="spinner">
         </ion-item>
