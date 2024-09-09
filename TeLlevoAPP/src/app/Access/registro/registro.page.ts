@@ -13,18 +13,22 @@ export class RegistroPage implements OnInit {
 
   user={
     "correo":"",
+    "usuario":"",
     "pass":""
   }
   cambiarSpinner(){
     this.spinner = !this.spinner;
   }
   Validar(){
-    if(this.user.correo.length!=0){
-      if(this.user.pass.length!=0){
-        //funciona
-        console.log('Correo', this.user.correo);
-        this.cambiarSpinner();
-        
+
+    if(this.user.usuario.length!=0){
+      if(this.user.correo.length!=0){
+        if(this.user.pass.length!=0){
+          //funciona
+          console.log('Usuario', this.user.usuario);
+          
+          
+        }
       }
     }
   }

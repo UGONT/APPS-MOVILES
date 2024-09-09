@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>registro</ion-title>
+    <ion-title>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -20,8 +20,8 @@
       </ion-card-header>
 
       <ion-card-content>
+        <ion-input label="Usuario: " [(ngModel)]="user.usuario" labelPlacement="floating" [counter]="true" ></ion-input>
         <ion-input label="Correo: " [(ngModel)]="user.correo" labelPlacement="floating" [counter]="true" ></ion-input>
-
         <ion-input id="custom-input"  [(ngModel)]="user.pass" type="password" label="Contraseña: " labelPlacement="floating" [counter]="true">          
         </ion-input>
         
