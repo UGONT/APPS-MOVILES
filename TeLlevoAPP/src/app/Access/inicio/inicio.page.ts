@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-inicio',
@@ -8,24 +9,42 @@ import { Router } from '@angular/router';
 })
 export class InicioPage implements OnInit {
   
-  spinner = false;
+  barra = false;
+  mensaje = "";
   constructor(private router:Router) {}
 
   user={
-    "username":"",
+    "usuario":"",
     "pass":""
   }
-  cambiarSpinner(){
-    this.spinner = !this.spinner;
+  cambiarBarra(){
+    this.barra = !this.barra;
   }
-  Validar(){
-    if(this.user.username.length!=0){
+  validar(){
+    if(this.user.usuario.length!=0){
       if(this.user.pass.length!=0){
-        //funciona
-        console.log('Usuario', this.user.username);
-        this.cambiarSpinner();
         
+        this.mensaje = 'Inicio exitoso';
+            let navigationExtras: NavigationExtras = {
+              state: {
+                usuario: this.user.usuario,
+                pass: this.user.pass,
+              },
+            };
+            this.cambiarBarra();
+            setTimeout(() => {
+              this.router.navigate(['/principal'], navigationExtras);
+              this.mensaje = "";
+              this.cambiarBarra();
+            }, 2000);
+
+            
+        
+      }else{
+        this.mensaje = "Contraseña vacia";
       }
+    }else{
+      this.mensaje = "Usuario vacio";
     }
   }
   ngOnInit() {

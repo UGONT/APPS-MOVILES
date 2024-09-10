@@ -8,13 +8,16 @@ import { InicioPageRoutingModule } from './inicio-routing.module';
 import { InicioPage } from './inicio.page';
 
 import {MatButtonModule} from '@angular/material/button';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     InicioPageRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressBarModule
   ],
   declarations: [InicioPage]
 })

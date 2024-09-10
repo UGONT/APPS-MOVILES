@@ -8,7 +8,7 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class RegistroPage implements OnInit {
 
-  spinner = false;
+  barra = false;
   constructor(private router:Router) {}
 
   user={
@@ -18,27 +18,28 @@ export class RegistroPage implements OnInit {
     "pass2":""
   }
   mensaje = "";
-  cambiarSpinner(){
-    this.spinner = !this.spinner;
+  cambiarBarra(){
+    this.barra = !this.barra;
   }
   validar(){
 
     if(this.user.usuario.length!=0){
       if(this.user.correo.length!=0){
         if(this.user.pass.length!=0){
-          if(this.user.pass2 != this.user.pass){
-            console.log('Usuario', this.user.usuario);
+          if(this.user.pass2 == this.user.pass){
             this.mensaje = 'Registro exitoso';
             let navigationExtras: NavigationExtras = {
               state: {
-                username: this.user.usuario,
+                usuario: this.user.usuario,
                 correo: this.user.correo,
-                password: this.user.pass,
+                pass: this.user.pass,
               },
             };
+            this.cambiarBarra();
             setTimeout(() => {
               this.router.navigate(['/principal'], navigationExtras);
               this.mensaje = "";
+              this.cambiarBarra();
             }, 2000);
           }else{
             this.mensaje="Contraseñas no coinciden"
