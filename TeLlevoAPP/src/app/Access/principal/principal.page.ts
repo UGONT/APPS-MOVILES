@@ -18,7 +18,13 @@ export class PrincipalPage implements OnInit {
     };
     this.usuario = state.usuario;
   }
+  //accion al cargar la pagina 
   ngOnInit() {
+    
+  }
+  //Accion una vez cargo la pagina
+  ngAfterContentInit(){
+
   }
 
 }

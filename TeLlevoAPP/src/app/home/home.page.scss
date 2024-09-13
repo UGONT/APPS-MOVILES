@@ -4,7 +4,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
+  top: 90%;
   transform: translateY(-50%);
 }
 
@@ -24,4 +24,19 @@
 
 #container a {
   text-decoration: none;
+}
+
+ion-card{
+  --background: rgba(0,0,0,0.1)
+}
+
+.reg {
+  --background: rgb(237, 168, 40); /* Color de fondo del botón */
+  --color: rgb(253, 253, 253); /* Color del texto del botón */
+  --border-color: rgb(0, 0, 0);
+}
+
+.log {
+  --color: aliceblue;
+
 }
