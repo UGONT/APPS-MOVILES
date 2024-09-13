@@ -1,19 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>principal</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-menu contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">principal</ion-title>
+      <ion-title>Menu de Contenidos</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-item>
-    <h4>HOLA {{usuario}}</h4>
-  </ion-item>
-</ion-content>
+  
+  <ion-content class="ion-padding" color="warning">
+    <div>
+      Menu esta en proceso de mejora.
+    </div>
+  </ion-content>
+    <div class="btn-ingresar-container">
+      <ion-item lines="none">
+        <ion-button class="btn-cerrar" size="default" [routerLink]="['/home']" >Cerrar Sesión</ion-button>
+      </ion-item>
+    </div>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Menu Principal</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding fondo" >
+    <h4 class="wel-usuario">Bienvenido {{usuario}}</h4>
+    <ion-searchbar show-cancel-button="focus" placeholder="¿A dónde vas?"></ion-searchbar>
+    <div> 
+      <br>
+      <img class="mapa" src="./assets/img/mapa.jpg" alt="">
+    </div>
+  </ion-content>
+
+</div>

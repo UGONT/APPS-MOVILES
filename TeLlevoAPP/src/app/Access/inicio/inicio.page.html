@@ -7,13 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+<ion-content [fullscreen]="true" class="fondo">
   <div id="container">
     <ion-card>
       <ion-card-header>
@@ -21,26 +15,29 @@
       </ion-card-header>
 
       <ion-card-content>
-        <ion-input label="Usuario: " [(ngModel)]="user.usuario" labelPlacement="floating" [counter]="true" ></ion-input>
+        <ion-input label="Usuario: " [(ngModel)]="user.usuario" labelPlacement="floating" [counter]="true" >
+        </ion-input>
 
         <ion-input id="custom-input"  [(ngModel)]="user.pass" type="password" label="Contraseña: " labelPlacement="floating" [counter]="true">          
+          <ion-input-password-toggle slot="end"> s</ion-input-password-toggle>
         </ion-input>
+        
         <ion-item>
-          <a href=""><p>Recuperar usuario o contraseña?</p></a>
+          <a href=""><p>¿Recuperar usuario o contraseña?</p></a>
         </ion-item>
         
         <ion-item>
           <ion-toggle justify="end">Recuerdame</ion-toggle><br /><br />
         </ion-item>
+        
         <ion-item>
           <ion-label>{{mensaje}}</ion-label>
         </ion-item>
-        <ion-item>
-          <ion-button (click)="validar()"   size="default">Ingresar</ion-button> 
+
+        <ion-item lines="none">
+          <ion-button class="btn-ingresar" (click)="validar()" size="default">Ingresar</ion-button>
         </ion-item>
-        
-        
-        
+         
         <ion-item *ngIf="barra">
           <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </ion-item>
