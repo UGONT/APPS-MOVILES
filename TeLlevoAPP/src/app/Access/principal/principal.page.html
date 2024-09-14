@@ -6,15 +6,16 @@
   </ion-header>
   
   <ion-content class="ion-padding" color="warning">
-    <div>
+    <div class="animar-borde">
       Menu esta en proceso de mejora.
     </div>
   </ion-content>
-    <div class="btn-ingresar-container">
-      <ion-item lines="none">
-        <ion-button class="btn-cerrar" size="default" [routerLink]="['/home']" >Cerrar Sesión</ion-button>
-      </ion-item>
-    </div>
+  
+  <div class="btn-ingresar-container">
+    <ion-item lines="none">
+      <ion-button class="btn-cerrar" size="default" [routerLink]="['/home']">Cerrar Sesión</ion-button>
+    </ion-item>
+  </div>
 </ion-menu>
 
 <div class="ion-page" id="main-content">
@@ -28,13 +29,12 @@
     </ion-toolbar>
   </ion-header>
   
-  <ion-content class="ion-padding fondo" >
+  <ion-content class="ion-padding fondo">
     <h4 class="wel-usuario">Bienvenido {{usuario}}</h4>
     <ion-searchbar show-cancel-button="focus" placeholder="¿A dónde vas?"></ion-searchbar>
-    <div> 
+    <div class="animar-bord"> 
       <br>
-      <img class="mapa" src="./assets/img/mapa.jpg" alt="">
+      <img class="mapa " src="./assets/img/mapa.jpg" alt="Mapa">
     </div>
   </ion-content>
-
 </div>
