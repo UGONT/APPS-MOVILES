@@ -1,6 +1,6 @@
 .btn-ingresar-container {
     margin-top: auto; /* Esto empuja el botón al fondo del contenedor */
-    padding: 16px; /* Puedes ajustar el padding si deseas más espacio alrededor del botón */
+    padding: 16px;
     display: flex;
     justify-content: center; /* Centra horizontalmente */
 }
@@ -14,7 +14,7 @@
 .wel-usuario{
     text-align: center; /* Centra el texto horizontalmente */
     margin: 0 auto; /* Asegura que el margen sea automático para centrar en su contenedor */
-    padding: 16px; /* Opcional: Añade espacio alrededor del texto */
+    padding: 16px; 
     color: white; /*color de las letras*/
 }
 
@@ -34,6 +34,11 @@
     to {
         opacity: 1;
     }
+}
+
+.btm-empezar{
+    --color: white;
+    --background: rgb(200, 185, 20);
 }
 
  /* .animar-borde {
