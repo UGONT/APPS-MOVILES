@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { trigger, style, transition, animate } from '@angular/animations';
+import { AuthentificatorService } from 'src/app/Servicios/authentificator.service';
 
 @Component({
   selector: 'app-principal',
@@ -49,5 +50,6 @@ export class PrincipalPage implements OnInit {
 
   logout() {
     this.auth.logout();
+    
   }
 }
