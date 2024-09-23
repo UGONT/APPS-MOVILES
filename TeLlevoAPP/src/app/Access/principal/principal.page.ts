@@ -22,7 +22,7 @@ export class PrincipalPage implements OnInit {
   usuario = '';
   taAnimao = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private auth : AuthentificatorService) {
     const navegacion = this.router.getCurrentNavigation();
     const state = navegacion?.extras.state as {
       usuario: '';
@@ -45,5 +45,9 @@ export class PrincipalPage implements OnInit {
     setTimeout(() => {
       this.taAnimao = false;
     }, 400); // Duracion total de la animacion (200ms + 200ms)
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }
