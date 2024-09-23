@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { AuthentificatorService } from 'src/app/Servicios/authentificator.service';
 
 
 @Component({
@@ -8,43 +9,40 @@ import { NavigationExtras, Router } from '@angular/router';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-  
+
   barra = false;
   mensaje = "";
-  constructor(private router:Router) {}
+  constructor(private router: Router, private auth: AuthentificatorService) { }
 
-  user={
-    "usuario":"",
-    "pass":""
+  user = {
+    "usuario": "",
+    "pass": ""
   }
-  cambiarBarra(){
+  cambiarBarra() {
     this.barra = !this.barra;
   }
-  validar(){
-    if(this.user.usuario.length!=0){
-      if(this.user.pass.length!=0){
-        
-        this.mensaje = 'Inicio exitoso';
-            let navigationExtras: NavigationExtras = {
-              state: {
-                usuario: this.user.usuario,
-                pass: this.user.pass,
-              },
-            };
-            this.cambiarBarra();
-            setTimeout(() => {
-              this.router.navigate(['/principal'], navigationExtras);
-              this.mensaje = "";
-              this.cambiarBarra();
-            }, 2000);
+  validar() {
+    if (this.auth.login(this.user.usuario, this.user.pass)) {
 
-            
-        
-      }else{
-        this.mensaje = "Contraseña vacia";
-      }
-    }else{
-      this.mensaje = "Usuario vacio";
+
+      this.mensaje = 'Inicio exitoso';
+      let navigationExtras: NavigationExtras = {
+        state: {
+          usuario: this.user.usuario,
+          pass: this.user.pass,
+        },
+      };
+      this.cambiarBarra();
+      setTimeout(() => {
+        this.router.navigate(['/principal'], navigationExtras);
+        this.mensaje = "";
+        this.cambiarBarra();
+      }, 2000);
+
+
+
+    } else {
+      this.mensaje = "Credenciales incorrectas.";
     }
   }
   ngOnInit() {
