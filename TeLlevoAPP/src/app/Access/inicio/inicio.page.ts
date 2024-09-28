@@ -23,8 +23,6 @@ export class InicioPage implements OnInit {
   }
   validar() {
     if (this.auth.login(this.user.usuario, this.user.pass)) {
-
-
       this.mensaje = 'Inicio exitoso';
       let navigationExtras: NavigationExtras = {
         state: {

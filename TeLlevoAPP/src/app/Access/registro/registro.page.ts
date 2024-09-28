@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
@@ -9,50 +10,52 @@ import { Router, NavigationExtras } from '@angular/router';
 export class RegistroPage implements OnInit {
 
   barra = false;
-  constructor(private router:Router) {}
+  formularioRegistro: FormGroup;
 
-  user={
-    "correo":"",
-    "usuario":"",
-    "pass":"",
-    "pass2":""
+  constructor(
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+    this.formularioRegistro = this.fb.group({
+
+      usuario: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3)
+      ]),
+      correo: new FormControl('',[
+        Validators.required,
+        Validators.email
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/),
+      ]),
+      confirmacionPassword: new FormControl('', Validators.required)
+
+    }, );
   }
+
+  passwordIguales(group: FormGroup) {
+    const password = group.get('password')?.value;
+    const confirmarPassword = group.get('confirmacionPassword')?.value;
+    return password == confirmarPassword ? null : { notMatching: true };
+  }
+
   mensaje = "";
-  cambiarBarra(){
+  cambiarBarra() {
     this.barra = !this.barra;
   }
-  validar(){
 
-    if(this.user.usuario.length!=0){
-      if(this.user.correo.length!=0){
-        if(this.user.pass.length!=0){
-          if(this.user.pass2 == this.user.pass){
-            this.mensaje = 'Registro exitoso';
-            let navigationExtras: NavigationExtras = {
-              state: {
-                usuario: this.user.usuario,
-                correo: this.user.correo,
-                pass: this.user.pass,
-              },
-            };
-            this.cambiarBarra();
-            setTimeout(() => {
-              this.router.navigate(['/principal'], navigationExtras);
-              this.mensaje = "";
-              this.cambiarBarra();
-            }, 2000);
-          }else{
-            this.mensaje="Contraseñas no coinciden"
-          }
-        }else{
-          this.mensaje="Contraseña vacia";
-        }
-      }else{
-        this.mensaje="Correo vacio";
-      }
+  enviarFormulario(){
+
+    if(this.formularioRegistro.valid){
+      /* BIEN */
+      console.log("BIEN")
     }else{
-      this.mensaje="Usuario vacio";
+      /* MAL */
+      console.log("MAL")
     }
+
   }
 
   ngOnInit() {
