@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
+import { AuthentificatorService } from 'src/app/Servicios/authentificator.service';
+import { StorageService } from 'src/app/Servicios/storage.service';
 
 @Component({
   selector: 'app-registro',
@@ -9,13 +11,16 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class RegistroPage implements OnInit {
 
+  username="";
   mensaje = "";
   barra = false;
   formularioRegistro: FormGroup;
 
   constructor(
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private auth:AuthentificatorService,
+    private storage:StorageService
   ) {
     this.formularioRegistro = this.fb.group({
 
@@ -52,10 +57,14 @@ export class RegistroPage implements OnInit {
     if(this.formularioRegistro.valid){
       /* BIEN */
       const formDatos = this.formularioRegistro.value;
-      this.router.navigate(['/principal'], {
-        state: { datos: formDatos }
-      });
+      
 
+      this.username = this.formularioRegistro.value.usuario;
+      this.storage.set(this.username,formDatos)
+      this.username = this.formularioRegistro.value.usuario;
+      
+      const test = this.storage.get("hugo")
+      console.log("EL usuario es: ", test)
     }else{
       /* MAL */
       console.log("MAL")

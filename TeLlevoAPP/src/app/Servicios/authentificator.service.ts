@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,12 @@ import { Injectable } from '@angular/core';
 export class AuthentificatorService {
 
   estado:boolean = false;
-  constructor() { }
+  constructor(private storage:StorageService) {
+    this.storage.set("test", "FOKINUGO");
+    const prueba = storage.get("test")
+    console.log(prueba)
+    
+   }
 
   login(username:String,password:String):boolean{
     if(username=="ugo" && password =="1234"){
