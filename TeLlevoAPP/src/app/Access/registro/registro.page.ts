@@ -9,6 +9,7 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class RegistroPage implements OnInit {
 
+  mensaje = "";
   barra = false;
   formularioRegistro: FormGroup;
 
@@ -41,7 +42,7 @@ export class RegistroPage implements OnInit {
     return password == confirmarPassword ? null : { notMatching: true };
   }
 
-  mensaje = "";
+  
   cambiarBarra() {
     this.barra = !this.barra;
   }
@@ -50,7 +51,11 @@ export class RegistroPage implements OnInit {
 
     if(this.formularioRegistro.valid){
       /* BIEN */
-      console.log("BIEN")
+      const formDatos = this.formularioRegistro.value;
+      this.router.navigate(['/principal'], {
+        state: { datos: formDatos }
+      });
+
     }else{
       /* MAL */
       console.log("MAL")

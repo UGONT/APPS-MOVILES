@@ -23,7 +23,10 @@ export class PrincipalPage implements OnInit {
   usuario = '';
   taAnimao = false;
 
-  constructor(private router: Router, private auth : AuthentificatorService) {
+  constructor(
+    private router: Router,
+    private auth : AuthentificatorService
+  ) {
     const navegacion = this.router.getCurrentNavigation();
     const state = navegacion?.extras.state as {
       usuario: '';
