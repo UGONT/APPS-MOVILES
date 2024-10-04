@@ -3,8 +3,9 @@
     flex-direction: column;
     align-items: center; // Centra el contenido
     padding: 16px; // Espacio alrededor del contenido
-    background-color: #007BFF; // Color de fondo azul
+    --background: rgba(1,44,86,255);  // Color de fondo azul
     height: 100%; // Asegura que ocupe toda la altura
+    
   }
   
   .error-mensaje{
