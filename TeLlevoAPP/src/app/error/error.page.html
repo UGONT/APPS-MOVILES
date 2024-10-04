@@ -1,16 +1,43 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" >
   <ion-toolbar>
-    <ion-title>error</ion-title>
+    <ion-title>Error</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="fondo_error">
+  
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Error de sistema</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div>
-    ERROR 404 WAZAA
+
+  <div class="error-mensaje">
+    <h2>ERROR 404 WAZAAA</h2>
   </div>
+
+  <ion-card color="warning">
+    <img alt="Gif" src="./assets/img/Giferror.gif" />
+
+    <ion-card-header>
+      <ion-card-title>!!OOPS, HA OCURRIDO UN ERROR!!</ion-card-title>
+      <ion-card-subtitle>Posibles errores</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ul>
+        <li>Página no encontrada</li>
+        <li>Errores de autenticación</li>
+        <li>Errores de interfaz de usuario</li>
+        <li>Fallos en la funcionalidad</li>
+        <li>Problemas de actualización</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <div>
+    <ion-button class="volver" [routerLink]="['/home']" shape="round" expand="full">Volver al Inicio</ion-button>
+  </div>
+  
 </ion-content>
+
