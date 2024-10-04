@@ -1,0 +1,50 @@
+.fondo_error {
+    display: flex;
+    flex-direction: column;
+    align-items: center; // Centra el contenido
+    padding: 16px; // Espacio alrededor del contenido
+    background-color: #007BFF; // Color de fondo azul
+    height: 100%; // Asegura que ocupe toda la altura
+  }
+  
+  .error-mensaje{
+    text-align: center; // Centra el texto
+    margin-bottom: 16px; // Espacio debajo del mensaje de error
+    color: white;
+  }
+  
+  ion-card {
+    width: 100%; // Ancho completo
+    max-width: 600px; // Máximo ancho para la carta
+    margin: 16px 0; // Espacio vertical alrededor de la carta
+    border-radius: 12px; // Esquinas redondeadas
+    background-color: rgb(237, 168, 40); // Color de fondo de la carta
+    color: white; // Color del texto dentro de la carta
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Sombra sutil
+  }
+  
+  ion-card-header {
+    background-color: rgb(237, 168, 40); // Color de fondo para el encabezado
+    border-radius: 12px 12px 0 0; // Esquinas redondeadas en la parte superior
+  }
+  
+  ion-card-content {
+    ul {
+      list-style-type: disc; // Estilo de lista con puntos
+      padding-left: 20px; // Espacio a la izquierda
+      color: white; // Color del texto en el contenido
+    }
+  }
+
+.volver{
+    position: absolute; // Posiciona el botón en relación a su contenedor más cercano que tenga position: relative.
+    bottom: 20px; // Establece la distancia desde el fondo del contenedor (20 píxeles).
+    left: 50%; // Coloca el botón a la mitad del contenedor desde la izquierda.
+    transform: translateX(-50%); // Desplaza el botón a la izquierda por la mitad de su ancho, centrándolo en el contenedor.
+    display: flex; // Utiliza flexbox para el diseño.
+    justify-content: center; // Centra el contenido horizontalmente.
+    padding: 16px; // Establece el espacio interno alrededor del contenido del botón.
+    --color: white;
+    --background: rgb(237, 168, 40);
+    --border-color: rgb(0, 0, 0);
+}
