@@ -56,6 +56,7 @@ export class RegistroPage implements OnInit {
 
     if(this.formularioRegistro.valid){
       /* BIEN */
+      this.mensaje = 'Registro exitoso!';
       const formDatos = this.formularioRegistro.value;
       
 
@@ -65,6 +66,13 @@ export class RegistroPage implements OnInit {
       
       const test = this.storage.get("hugo")
       console.log("EL usuario es: ", test)
+
+      this.cambiarBarra();
+      setTimeout(() => {
+        this.router.navigate(['/home'],);
+        this.mensaje = "";
+        this.cambiarBarra();
+      }, 2000);
     }else{
       /* MAL */
       console.log("MAL")

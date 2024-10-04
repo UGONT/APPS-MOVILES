@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AuthentificatorService } from 'src/app/Servicios/authentificator.service';
+import { StorageService } from 'src/app/Servicios/storage.service';
 
 
 @Component({
@@ -12,7 +13,11 @@ export class InicioPage implements OnInit {
 
   barra = false;
   mensaje = "";
-  constructor(private router: Router, private auth: AuthentificatorService) { }
+  constructor(
+    private router: Router,
+    private auth: AuthentificatorService,
+    private storage: StorageService
+  ) { }
 
   user = {
     "usuario": "",
@@ -22,7 +27,7 @@ export class InicioPage implements OnInit {
     this.barra = !this.barra;
   }
   validar() {
-    if (this.auth.login(this.user.usuario, this.user.pass)) {
+    if (this.auth.loginBDD(this.user.usuario, this.user.pass)) {
       this.mensaje = 'Inicio exitoso';
       let navigationExtras: NavigationExtras = {
         state: {
@@ -43,6 +48,7 @@ export class InicioPage implements OnInit {
       this.mensaje = "Credenciales incorrectas.";
     }
   }
+  
   ngOnInit() {
   }
 
