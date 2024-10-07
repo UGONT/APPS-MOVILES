@@ -12,8 +12,8 @@ export class AuthentificatorService {
     this.estado = false;
   }
 
-  loginBDD(user: string, pass: string): boolean{
-    this.storage.get(user).then((val) => {
+  async loginBDD(user: string, pass: string): Promise<boolean>{
+    await this.storage.get(user).then((val) => {
       if(val.password == pass) {
         console.log('Usuario encontrado');
         this.estado = true;
@@ -30,12 +30,6 @@ export class AuthentificatorService {
       return false;
     }
   }
-
-
-
-
-
-
 
   /* login(username: String, password: String): boolean {
     if (username == "ugo" && password == "1234") {

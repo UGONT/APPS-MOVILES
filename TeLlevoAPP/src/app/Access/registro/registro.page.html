@@ -20,20 +20,15 @@
 
 
           <ion-input label="Usuario: " formControlName="usuario" labelPlacement="floating" [counter]="true"></ion-input>
-          <ion-text color="danger" *ngIf="formularioRegistro.get('usuario')?.invalid && formularioRegistro.get('usuario')?.touched">
-            El nombre es obligatorio.
-          </ion-text>
+          
 
           <ion-input label="Correo: " formControlName="correo" labelPlacement="floating" [counter]="true"></ion-input>
 
           <ion-input id="custom-input" formControlName="password" type="password" label="Contraseña: "
             labelPlacement="floating" [counter]="true">
           </ion-input>
-          <ion-text color="danger" *ngIf="formularioRegistro.get('password')?.hasError('required') && formularioRegistro.get('password')?.touched">
-            La contraseña es obligatoria y debe tener al menos 8 caracteres.
-          </ion-text>
           
-
+        
           <ion-input id="custom-input" formControlName="confirmacionPassword" type="password"
             label="Repetir contraseña: " labelPlacement="floating" [counter]="true">
           </ion-input>

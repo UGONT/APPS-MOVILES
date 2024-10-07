@@ -38,7 +38,7 @@ export class RegistroPage implements OnInit {
       ]),
       confirmacionPassword: new FormControl('', Validators.required)
 
-    }, );
+    }, { validators: this.passwordIguales });
   }
 
   passwordIguales(group: FormGroup) {
@@ -52,7 +52,7 @@ export class RegistroPage implements OnInit {
     this.barra = !this.barra;
   }
 
-  enviarFormulario(){
+  async enviarFormulario(){
 
     if(this.formularioRegistro.valid){
       /* BIEN */
@@ -61,11 +61,18 @@ export class RegistroPage implements OnInit {
       
 
       this.username = this.formularioRegistro.value.usuario;
-      this.storage.set(this.username,formDatos)
-      this.username = this.formularioRegistro.value.usuario;
-      
-      const test = this.storage.get("hugo")
-      console.log("EL usuario es: ", test)
+
+      try {
+
+        await this.storage.set(this.username,formDatos)
+        console.log('usuario guardado')
+
+        const test = await this.storage.get(this.username)
+        console.log("EL usuario es: ", test)
+
+      } catch (error) {
+        console.log('ERROR al guardar')
+      }
 
       this.cambiarBarra();
       setTimeout(() => {

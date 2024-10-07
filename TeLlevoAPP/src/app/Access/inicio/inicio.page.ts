@@ -26,8 +26,8 @@ export class InicioPage implements OnInit {
   cambiarBarra() {
     this.barra = !this.barra;
   }
-  validar() {
-    if (this.auth.loginBDD(this.user.usuario, this.user.pass)) {
+  async validar() {
+    if (await this.auth.loginBDD(this.user.usuario, this.user.pass)) {
       this.mensaje = 'Inicio exitoso';
       let navigationExtras: NavigationExtras = {
         state: {
@@ -42,13 +42,20 @@ export class InicioPage implements OnInit {
         this.cambiarBarra();
       }, 2000);
 
-
-
     } else {
       this.mensaje = "Credenciales incorrectas.";
     }
   }
   
+  async eliminarTodosLosUsuarios() {
+    try {
+      await this.storage.clear();
+      console.log('Todos los usuarios han sido eliminados');
+    } catch (error) {
+      console.log('Error al eliminar todos los usuarios', error);
+    }
+  }
+
   ngOnInit() {
   }
 
