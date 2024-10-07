@@ -28,6 +28,10 @@ const routes: Routes = [
     path: 'error',
     loadChildren: () => import('./error/error.module').then( m => m.ErrorPageModule)
   },
+  {
+    path: 'mantenedor',
+    loadChildren: () => import('./admin/mantenedor/mantenedor.module').then( m => m.MantenedorPageModule)
+  },
 
 
 ];
