@@ -1,19 +1,36 @@
 {
-    "users": [
+  "users": [
     {
       "username": "hugo",
       "email": "correo@correo.cl",
-      "password": "pass1234"
+      "password": "pass1234",
+      "id": "a6d3"
     },
     {
       "username": "z.test",
       "email": "email@gmail.com",
-      "password": "password1234"
+      "password": "password1234",
+      "id": "edc7"
     },
     {
       "username": "i.prueba",
       "email": "prueba@outlook.com",
-      "password": "contraseña"
+      "password": "contraseña",
+      "id": "81d1"
+    },
+    {
+      "id": "0e92",
+      "username": "donugo",
+      "email": "hu@gmail.cl",
+      "password": "Hugo1234$"
+    }
+  ],
+  "test": [
+    {
+      "id": "fe4b",
+      "username": "test",
+      "email": "test@g",
+      "password": "Hugo1234$"
     }
   ]
 }

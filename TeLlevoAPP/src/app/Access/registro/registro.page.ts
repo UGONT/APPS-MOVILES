@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router, NavigationExtras } from '@angular/router';
 import { AuthentificatorService } from 'src/app/Servicios/authentificator.service';
 import { StorageService } from 'src/app/Servicios/storage.service';
+import { ApiControllerService } from 'src/app/Servicios/api-controller.service';
 
 @Component({
   selector: 'app-registro',
@@ -11,6 +12,11 @@ import { StorageService } from 'src/app/Servicios/storage.service';
 })
 export class RegistroPage implements OnInit {
 
+  user = {
+    "username": "",
+    "email": "",
+    "password": ""
+  }
   username="";
   mensaje = "";
   barra = false;
@@ -20,7 +26,9 @@ export class RegistroPage implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private auth:AuthentificatorService,
-    private storage:StorageService
+    private storage:StorageService,
+    private api:ApiControllerService,
+
   ) {
     this.formularioRegistro = this.fb.group({
 
@@ -56,15 +64,31 @@ export class RegistroPage implements OnInit {
 
     if(this.formularioRegistro.valid){
       /* BIEN */
-      this.mensaje = 'Registro exitoso!';
-      const formDatos = this.formularioRegistro.value;
+      
+      
       
 
-      this.username = this.formularioRegistro.value.usuario;
+      this.user.username = this.formularioRegistro.value.usuario;
+      this.user.email = this.formularioRegistro.value.correo;
+      this.user.password = this.formularioRegistro.value.password;
 
       try {
 
-        await this.storage.set(this.username,formDatos)
+        this.api.insertarUsuarios(this.user).subscribe(
+          (respuesta)=>{
+            this.mensaje = 'Registro exitoso!';
+            console.log("Registro exitoso del usuario: ", this.user.username)
+
+          },
+          (error)=>{
+            console.log("ERROR en la llamada")
+          }
+        )
+
+
+
+
+        await this.storage.set(this.username,this.user)
         console.log('usuario guardado')
 
         const test = await this.storage.get(this.username)
