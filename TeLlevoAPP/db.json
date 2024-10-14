@@ -25,6 +25,7 @@
       "password": "Hugo1234$"
     },
     {
+
       "id": "fdd2",
       "username": "hugo",
       "email": "hu@g",
@@ -36,6 +37,9 @@
       "email": "hu@s",
       "password": "Hugo123#"
     }
+      
+
+    
   ],
   "test": [
     {
