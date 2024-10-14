@@ -23,6 +23,12 @@
       "username": "donugo",
       "email": "hu@gmail.cl",
       "password": "Hugo1234$"
+    },
+    {
+      "id": "e068",
+      "username": "hugo",
+      "email": "hu@duoc",
+      "password": "Hugo1234$"
     }
   ],
   "test": [
