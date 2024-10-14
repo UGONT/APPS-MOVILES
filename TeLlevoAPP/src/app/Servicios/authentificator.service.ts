@@ -8,7 +8,9 @@ export class AuthentificatorService {
 
   
   estado: boolean;
-  constructor(private storage: StorageService) {
+  constructor(
+    private storage: StorageService
+  ) {
     this.estado = false;
   }
 

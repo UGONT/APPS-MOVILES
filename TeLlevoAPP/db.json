@@ -23,6 +23,18 @@
       "username": "donugo",
       "email": "hu@gmail.cl",
       "password": "Hugo1234$"
+    },
+    {
+      "id": "fdd2",
+      "username": "hugo",
+      "email": "hu@g",
+      "password": "Hugo1234$"
+    },
+    {
+      "id": "103b",
+      "username": "UGO",
+      "email": "hu@s",
+      "password": "Hugo123#"
     }
   ],
   "test": [

@@ -17,7 +17,7 @@ export class RegistroPage implements OnInit {
     "email": "",
     "password": ""
   }
-  username="";
+  
   mensaje = "";
   barra = false;
   formularioRegistro: FormGroup;
@@ -27,7 +27,8 @@ export class RegistroPage implements OnInit {
     private fb: FormBuilder,
     private auth:AuthentificatorService,
     private storage:StorageService,
-    private api:ApiControllerService,
+    private api:ApiControllerService
+    
 
   ) {
     this.formularioRegistro = this.fb.group({
@@ -75,23 +76,24 @@ export class RegistroPage implements OnInit {
       try {
 
         this.api.insertarUsuarios(this.user).subscribe(
-          (respuesta)=>{
+          (respuesta) => {
             this.mensaje = 'Registro exitoso!';
-            console.log("Registro exitoso del usuario: ", this.user.username)
+            console.log("Registro exitoso del usuario: ", this.user.username);
 
           },
-          (error)=>{
-            console.log("ERROR en la llamada")
+          (error) => {
+            console.log("ERROR en la llamada");
           }
         )
 
 
 
 
-        await this.storage.set(this.username,this.user)
+        await this.storage.set(this.user.username,this.user)
         console.log('usuario guardado')
 
-        const test = await this.storage.get(this.username)
+        const test = await this.storage.get(this.user.username)
+        console.log("EL NOMBRE GUARDAO es: ", this.user.username)
         console.log("EL usuario es: ", test)
 
       } catch (error) {
