@@ -17,7 +17,7 @@ export class RegistroPage implements OnInit {
     "email": "",
     "password": ""
   }
-  
+
   mensaje = "";
   barra = false;
   formularioRegistro: FormGroup;
@@ -25,10 +25,10 @@ export class RegistroPage implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private auth:AuthentificatorService,
-    private storage:StorageService,
-    private api:ApiControllerService
-    
+    private auth: AuthentificatorService,
+    private storage: StorageService,
+    private api: ApiControllerService
+
 
   ) {
     this.formularioRegistro = this.fb.group({
@@ -37,13 +37,13 @@ export class RegistroPage implements OnInit {
         Validators.required,
         Validators.minLength(3)
       ]),
-      correo: new FormControl('',[
+      correo: new FormControl('', [
         Validators.required,
         Validators.email
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/),
+        Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.])[A-Za-z\d@$!%*#?&.]{8,}$/),
       ]),
       confirmacionPassword: new FormControl('', Validators.required)
 
@@ -56,45 +56,35 @@ export class RegistroPage implements OnInit {
     return password == confirmarPassword ? null : { notMatching: true };
   }
 
-  
+
   cambiarBarra() {
     this.barra = !this.barra;
   }
 
-  async enviarFormulario(){
+  async enviarFormulario() {
 
-    if(this.formularioRegistro.valid){
-      /* BIEN */
+    if (this.formularioRegistro.valid) {
       
-      
-      
-
+      /* JSON */
       this.user.username = this.formularioRegistro.value.usuario;
       this.user.email = this.formularioRegistro.value.correo;
       this.user.password = this.formularioRegistro.value.password;
 
       try {
-
         this.api.insertarUsuarios(this.user).subscribe(
           (respuesta) => {
             this.mensaje = 'Registro exitoso!';
-            console.log("Registro exitoso del usuario: ", this.user.username);
-
+            console.log("Registro exitoso JSON del usuario: ", this.user.username);
           },
           (error) => {
             console.log("ERROR en la llamada");
           }
         )
-
-
-
-
-        await this.storage.set(this.user.username,this.user)
-        console.log('usuario guardado')
+        await this.storage.set(this.user.username, this.user)
+        console.log('usuario guardado en storage')
 
         const test = await this.storage.get(this.user.username)
-        console.log("EL NOMBRE GUARDAO es: ", this.user.username)
-        console.log("EL usuario es: ", test)
+        console.log("EL usuario en storage es: ", test)
 
       } catch (error) {
         console.log('ERROR al guardar')
@@ -106,7 +96,7 @@ export class RegistroPage implements OnInit {
         this.mensaje = "";
         this.cambiarBarra();
       }, 2000);
-    }else{
+    } else {
       /* MAL */
       console.log("MAL")
     }
