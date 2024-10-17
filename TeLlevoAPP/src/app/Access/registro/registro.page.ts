@@ -13,7 +13,7 @@ import { ApiControllerService } from 'src/app/Servicios/api-controller.service';
 export class RegistroPage implements OnInit {
 
   user = {
-    "username": "",
+    "user": "",
     "email": "",
     "password": ""
   }
@@ -66,7 +66,7 @@ export class RegistroPage implements OnInit {
     if (this.formularioRegistro.valid) {
       
       /* JSON */
-      this.user.username = this.formularioRegistro.value.usuario;
+      this.user.user = this.formularioRegistro.value.usuario;
       this.user.email = this.formularioRegistro.value.correo;
       this.user.password = this.formularioRegistro.value.password;
 
@@ -74,16 +74,19 @@ export class RegistroPage implements OnInit {
         this.api.insertarUsuarios(this.user).subscribe(
           (respuesta) => {
             this.mensaje = 'Registro exitoso!';
-            console.log("Registro exitoso JSON del usuario: ", this.user.username);
+            /* test */
+            console.log("Registro exitoso JSON del usuario: ", this.user.user);
           },
           (error) => {
             console.log("ERROR en la llamada");
           }
         )
-        await this.storage.set(this.user.username, this.user)
-        console.log('usuario guardado en storage')
 
-        const test = await this.storage.get(this.user.username)
+        /* test */
+        await this.storage.set(this.user.user, this.user)
+        console.log('usuario guardado en storage')
+        /* test */
+        const test = await this.storage.get(this.user.user)
         console.log("EL usuario en storage es: ", test)
 
       } catch (error) {

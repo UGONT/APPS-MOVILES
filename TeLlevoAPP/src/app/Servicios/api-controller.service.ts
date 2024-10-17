@@ -7,17 +7,18 @@ import { Observable } from 'rxjs';
 })
 export class ApiControllerService {
 
-  apiURL = "http://localhost:3000/"
-
+  apiURL = "http://127.0.0.1:8000/api/"
+  /* apiURL = "http://localhost:3000/" */
+  
   constructor(private http: HttpClient) {
   }
 
   obtenerUsuarios():Observable<any>{
-   return this.http.get(this.apiURL+"users/"); 
+   return this.http.get(this.apiURL+"lista_usuarios"); 
   }
 
   insertarUsuarios(data:any):Observable<any>{
-    return this.http.post(this.apiURL+"users/",data);
+    return this.http.post(this.apiURL+"lista_usuarios/",data);
   }
 
   borrarUsuario(id:any):Observable<any>{

@@ -34,7 +34,7 @@
               <ion-col><strong>Eliminar</strong></ion-col>
             </ion-row>
             <ion-row *ngFor="let user of users">
-              <ion-col>{{user.username}}</ion-col>
+              <ion-col>{{user.user}}</ion-col>
               <ion-col>{{user.email}}</ion-col>
               <ion-col>{{user.password}}</ion-col>
               <ion-col (click)="modificarUsuario(user.id)">
