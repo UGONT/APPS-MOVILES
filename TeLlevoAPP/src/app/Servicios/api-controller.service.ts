@@ -13,6 +13,10 @@ export class ApiControllerService {
   constructor(private http: HttpClient) {
   }
 
+  obtenerUnUsuario(id:any):Observable<any>{
+    return this.http.get(this.apiURL+"datos_usuario/"+id)
+  }
+
   obtenerUsuarios():Observable<any>{
    return this.http.get(this.apiURL+"lista_usuarios"); 
   }
@@ -22,11 +26,11 @@ export class ApiControllerService {
   }
 
   borrarUsuario(id:any):Observable<any>{
-    return this.http.delete(this.apiURL+"users/"+id)
+    return this.http.delete(this.apiURL+"datos_usuario/"+id)
   }
 
   modificarUsuario(id:any,data:any):Observable<any>{
-    return this.http.put(this.apiURL+"users/"+id,data)
+    return this.http.put(this.apiURL+"datos_usuario/"+id,data)
   }
 
 }

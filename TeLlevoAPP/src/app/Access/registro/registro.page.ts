@@ -17,6 +17,7 @@ export class RegistroPage implements OnInit {
     "email": "",
     "password": ""
   }
+  
 
   mensaje = "";
   barra = false;
@@ -66,9 +67,13 @@ export class RegistroPage implements OnInit {
     if (this.formularioRegistro.valid) {
       
       /* JSON */
-      this.user.user = this.formularioRegistro.value.usuario;
-      this.user.email = this.formularioRegistro.value.correo;
-      this.user.password = this.formularioRegistro.value.password;
+      this.user = {
+        user: this.formularioRegistro.value.usuario,
+        email: this.formularioRegistro.value.correo,
+        password: this.formularioRegistro.value.password
+      };
+
+      
 
       try {
         this.api.insertarUsuarios(this.user).subscribe(
@@ -78,7 +83,7 @@ export class RegistroPage implements OnInit {
             console.log("Registro exitoso JSON del usuario: ", this.user.user);
           },
           (error) => {
-            console.log("ERROR en la llamada");
+            console.log("ERROR en la llamada",error);
           }
         )
 

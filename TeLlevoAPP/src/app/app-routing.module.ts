@@ -32,6 +32,10 @@ const routes: Routes = [
     path: 'mantenedor',
     loadChildren: () => import('./admin/mantenedor/mantenedor.module').then( m => m.MantenedorPageModule)
   },
+  {
+    path: 'modal',
+    loadChildren: () => import('./admin/modal/modal.module').then( m => m.ModalPageModule)
+  },
 
 
 ];
