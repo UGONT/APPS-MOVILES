@@ -4,20 +4,26 @@ import { Router, NavigationExtras } from '@angular/router';
 import { AuthentificatorService } from 'src/app/Servicios/authentificator.service';
 import { StorageService } from 'src/app/Servicios/storage.service';
 import { ApiControllerService } from 'src/app/Servicios/api-controller.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.page.html',
-  styleUrls: ['./registro.page.scss'],
+  selector: 'app-modificar',
+  templateUrl: './modificar.page.html',
+  styleUrls: ['./modificar.page.scss'],
 })
-export class RegistroPage implements OnInit {
+export class ModificarPage implements OnInit {
 
+  /* usuario a modificar */
   user = {
     "user": "",
     "email": "",
     "password": ""
   }
-  
+  /* datos usuario desde mantenedor */
+  id = ""
+  username = ""
+  email = ""
+  password = ""
 
   mensaje = "";
   barra = false;
@@ -26,12 +32,24 @@ export class RegistroPage implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private auth: AuthentificatorService,
-    private storage: StorageService,
-    private api: ApiControllerService
-
-
+    private api: ApiControllerService,
+    private alertController: AlertController
   ) {
+
+    const navegacion = this.router.getCurrentNavigation();
+    const state = navegacion?.extras.state as {
+      id:'';
+      username: '';
+      email: '';
+      password: '';
+    };
+
+    this.id = state.id
+    this.username = state.username
+    this.email = state.email
+    this.password = state.password
+
+
     this.formularioRegistro = this.fb.group({
 
       usuario: new FormControl('', [
@@ -65,7 +83,7 @@ export class RegistroPage implements OnInit {
   async enviarFormulario() {
 
     if (this.formularioRegistro.valid) {
-      
+
       /* JSON */
       this.user = {
         user: this.formularioRegistro.value.usuario,
@@ -73,46 +91,50 @@ export class RegistroPage implements OnInit {
         password: this.formularioRegistro.value.password
       };
 
-      
+
 
       try {
-        this.api.insertarUsuarios(this.user).subscribe(
+        
+        this.api.modificarUsuario(this.id,this.user).subscribe(
           (respuesta) => {
-            this.mensaje = 'Registro exitoso!';
+            this.mensaje = 'Usuario modificado con exito!';
             /* test */
-            console.log("Registro exitoso JSON del usuario: ", this.user.user);
+            console.log("Usuario modificado ", this.user.user);
 
             this.cambiarBarra();
+            this.mostrarAlerta()
             setTimeout(() => {
-              this.router.navigate(['/home'],);
+              this.router.navigate(['/mantenedor'],);
               this.mensaje = "";
               this.cambiarBarra();
             }, 2000);
 
           },
           (error) => {
-            console.log("ERROR en la llamada",error);
+            console.log("ERROR en la llamada", error);
             return
           }
         )
-        
-        /* test */
-        await this.storage.set(this.user.user, this.user)
-        console.log('usuario guardado en storage')
-        /* test */
-        const test = await this.storage.get(this.user.user)
-        console.log("EL usuario en storage es: ", test)
 
       } catch (error) {
         console.log('ERROR al guardar')
       }
 
-      
     } else {
       /* MAL */
       console.log("Formulario incompleto")
     }
 
+  }
+
+  async mostrarAlerta() {
+    const alert = await this.alertController.create({
+      header: '¡BIEN!',
+      message: 'Usuario modificado con exito!.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   ngOnInit() {

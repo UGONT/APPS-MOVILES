@@ -18,14 +18,18 @@ def lista_usuarios(request):
         serializer = UsuarioSerializer(usuario,many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
-        print(request.data)
+        
         """ data = JSONParser().parse(request) """
         serializer = UsuarioSerializer(data=request.data)
         if serializer.is_valid():
+            username = serializer.validated_data.get("user")
+            if Usuario.objects.filter(user=username).exists():
+                return Response({"error": "El usuario ya existe."}, status=status.HTTP_400_BAD_REQUEST)    
             serializer.save()
-            return Response(serializer.data,status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:          
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
         
 
 @api_view(['GET','PUT','DELETE'])

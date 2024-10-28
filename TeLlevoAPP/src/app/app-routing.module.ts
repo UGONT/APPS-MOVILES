@@ -36,6 +36,10 @@ const routes: Routes = [
     path: 'modal',
     loadChildren: () => import('./admin/modal/modal.module').then( m => m.ModalPageModule)
   },
+  {
+    path: 'modificar',
+    loadChildren: () => import('./admin/modificar/modificar.module').then( m => m.ModificarPageModule)
+  },
 
 
 ];

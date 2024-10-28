@@ -16,20 +16,20 @@
   <div id="container">
     <ion-card>
       <ion-card-header>
-        <ion-card-title>Mantenedor Usuarios</ion-card-title>
+        <ion-card-title>Mantenedor Usuarios (-DISEÑO POR MODIFICAR-)</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <ion-list>
-          <ion-item>
-            <ion-button fill="clear" slot="end">
-              Agregar nuevo Usuario
+          <!-- <ion-item>
+            <ion-button fill="clear" slot="end" click="cargarUsuarios()">
+              Refrescar
             </ion-button>
-          </ion-item>
+          </ion-item> -->
           <ion-grid fixed>
             <ion-row>
-              <ion-col><strong>Nombre Usuario</strong></ion-col>
-              <ion-col><strong>Correo Usuario</strong></ion-col>
-              <ion-col><strong>Contraseña Usuario</strong></ion-col>
+              <ion-col><strong>Nombre</strong></ion-col>
+              <ion-col><strong>Correo</strong></ion-col>
+              <ion-col><strong>Contraseña</strong></ion-col>
               <ion-col><strong>Modificar</strong></ion-col>
               <ion-col><strong>Eliminar</strong></ion-col>
             </ion-row>
@@ -37,7 +37,7 @@
               <ion-col>{{user.user}}</ion-col>
               <ion-col>{{user.email}}</ion-col>
               <ion-col>{{user.password}}</ion-col>
-              <ion-col (click)="abrirModal(user.id)">
+              <ion-col (click)="modificarUsuario(user.id)">
                 <ion-button fill="outline" size="small">
                   Modificar
                 </ion-button>

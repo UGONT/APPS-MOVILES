@@ -1,29 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>modal</ion-title>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Introducir datos</ion-title>
+      <ion-title>Modificar datos</ion-title>
       <ion-buttons slot="end">
         <ion-button (click)="cerrarModal()">Cerrar</ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
   <ion-content>
+    <ion-input label="Usuario: " [(ngModel)]="usu.user"  labelPlacement="floating" [counter]="true"></ion-input>
+
+
+    <ion-input label="Correo: " [(ngModel)]="usu.email"  labelPlacement="floating" [counter]="true"></ion-input>
+
+    <ion-input id="custom-input" [(ngModel)]="usu.password"  type="password" label="Contraseña: "
+      labelPlacement="floating" [counter]="true">
+    </ion-input>
+
     <ion-item>
-      <ion-label position="stacked">Nombre</ion-label>
-      <ion-input [(ngModel)]="user.user"></ion-input>
+      <ion-button class="btn-registrar"  size="default">Registrarse</ion-button>
     </ion-item>
-  
-    <ion-item>
-      <ion-label position="stacked">Edad</ion-label>
-      <ion-input [(ngModel)]="user.password" type="number"></ion-input>
-    </ion-item>
-  
+
     <ion-button expand="block" (click)="guardarDatos()">Guardar</ion-button>
   </ion-content>
 </ion-content>

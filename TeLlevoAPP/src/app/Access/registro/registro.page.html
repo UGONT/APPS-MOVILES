@@ -18,20 +18,53 @@
       <ion-card-content>
         <form [formGroup]="formularioRegistro" (ngSubmit)="enviarFormulario()">
 
-
+          <!-- Campo Usuario -->
           <ion-input label="Usuario: " formControlName="usuario" labelPlacement="floating" [counter]="true"></ion-input>
           
+          <ion-text color="danger" *ngIf="formularioRegistro.get('usuario')?.hasError('required') && formularioRegistro.get('usuario')?.touched">
+            El nombre de usuario es requerido.
+          </ion-text>
 
+          <ion-text color="danger" *ngIf="formularioRegistro.get('usuario')?.hasError('minlength') && formularioRegistro.get('usuario')?.touched">
+            El usuario debe tener al menos 3 caracteres.
+          </ion-text>
+
+          <!-- Campo Correo -->
           <ion-input label="Correo: " formControlName="correo" labelPlacement="floating" [counter]="true"></ion-input>
 
+          <ion-text color="danger" *ngIf="formularioRegistro.get('correo')?.hasError('required') && formularioRegistro.get('correo')?.touched">
+            El correo es requerido.
+          </ion-text>
+          <ion-text color="danger" *ngIf="formularioRegistro.get('correo')?.hasError('email') && formularioRegistro.get('correo')?.touched">
+            Ingrese un correo electrónico válido.
+          </ion-text>
+
+          <!-- Campo Contrasena -->
           <ion-input id="custom-input" formControlName="password" type="password" label="Contraseña: "
-            labelPlacement="floating" [counter]="true">
+            labelPlacement="floating" [counter]="true"><ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>
+
+          <ion-text color="danger" *ngIf="formularioRegistro.get('password')?.hasError('required') && formularioRegistro.get('password')?.touched">
+            La contraseña es requerida.
+          </ion-text>
+
+          <ion-text color="danger" *ngIf="formularioRegistro.get('password')?.hasError('pattern') && formularioRegistro.get('password')?.touched">
+            La contraseña debe tener al menos 8 caracteres, incluyendo una letra, un número y un símbolo especial.
+          </ion-text>
           
-        
+
+          <!-- Campo Repetir Contrasena -->
           <ion-input id="custom-input" formControlName="confirmacionPassword" type="password"
             label="Repetir contraseña: " labelPlacement="floating" [counter]="true">
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>
+
+          <ion-text color="danger" *ngIf="formularioRegistro.get('confirmacionPassword')?.hasError('required') && formularioRegistro.get('confirmacionPassword')?.touched">
+            La confirmación de la contraseña es requerida.
+          </ion-text>
+          <ion-text color="danger" *ngIf="formularioRegistro?.hasError('notMatching') && formularioRegistro.get('confirmacionPassword')?.touched">
+            Las contraseñas no coinciden.
+          </ion-text>
           
 
           <ion-item>

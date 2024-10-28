@@ -17,6 +17,10 @@ export class ApiControllerService {
     return this.http.get(this.apiURL+"datos_usuario/"+id)
   }
 
+  buscarUsuario(user:any):Observable<any>{
+    return this.http.get(this.apiURL+"datos_usuario/"+user)
+  }
+
   obtenerUsuarios():Observable<any>{
    return this.http.get(this.apiURL+"lista_usuarios"); 
   }
