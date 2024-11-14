@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AuthentificatorService } from 'src/app/Servicios/authentificator.service';
 import { StorageService } from 'src/app/Servicios/storage.service';
+import { UsuarioService } from 'src/app/Servicios/usuario.service';
 
 
 @Component({
@@ -13,40 +14,39 @@ export class InicioPage implements OnInit {
 
   barra = false;
   mensaje = "";
+
   constructor(
     private router: Router,
     private auth: AuthentificatorService,
-    private storage: StorageService
+    private storage: StorageService,
+    private usuarioService: UsuarioService
   ) { }
 
   user = {
-    "usuario": "",
-    "pass": ""
+    "usuario": "hugo",
+    "pass": "hugo123#"
   }
   cambiarBarra() {
     this.barra = !this.barra;
   }
   async validar() {
+    /* hugo hugo123# */
+    /* this.user.usuario  this.user.pass*/
     if (await this.auth.loginBDD(this.user.usuario, this.user.pass)) {
       this.mensaje = 'Inicio exitoso';
-      let navigationExtras: NavigationExtras = {
-        state: {
-          usuario: this.user.usuario,
-          pass: this.user.pass,
-        },
-      };
+      this.usuarioService.setNombreUsuario(this.user.usuario);
       this.cambiarBarra();
       setTimeout(() => {
-        this.router.navigate(['/principal'], navigationExtras);
+        this.router.navigate(['/tabs'],);
         this.mensaje = "";
         this.cambiarBarra();
-      }, 2000);
+      }, 1);
 
     } else {
       this.mensaje = "Credenciales incorrectas.";
     }
   }
-  
+
   async eliminarTodosLosUsuarios() {
     try {
       await this.storage.clear();
@@ -60,4 +60,3 @@ export class InicioPage implements OnInit {
   }
 
 }
-  

@@ -1,0 +1,19 @@
+.btn-ingresar-container {
+    margin-top: auto; /* Esto empuja el botón al fondo del contenedor */
+    padding: 16px;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+}
+
+.btn-cerrar {
+    --background: red; /* Color de fondo del botón */
+    --color: white; /* Color del texto del botón */
+    --border-color: red; /* Color del borde del botón */
+}
+
+.wel-usuario{
+    text-align: center; /* Centra el texto horizontalmente */
+    margin: 0 auto; /* Asegura que el margen sea automático para centrar en su contenedor */
+    padding: 16px; 
+    color: white; /*color de las letras*/
+}

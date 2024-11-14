@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { AuthentificatorService } from 'src/app/Servicios/authentificator.service';
 
+import { addIcons } from 'ionicons';
+import {  } from 'ionicons/icons';
+import { UsuarioService } from 'src/app/Servicios/usuario.service';
+
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.page.html',
@@ -20,24 +24,19 @@ import { AuthentificatorService } from 'src/app/Servicios/authentificator.servic
 
 export class PrincipalPage implements OnInit {
 
-  usuario = '';
+  nombreUsuario = '';
   taAnimao = false;
 
   constructor(
     private router: Router,
-    private auth : AuthentificatorService
+    private auth : AuthentificatorService,
+    private usuarioService: UsuarioService
   ) {
-    const navegacion = this.router.getCurrentNavigation();
-    const state = navegacion?.extras.state as {
-      usuario: '';
-      correo: '';
-      pass: '';
-    };
-    this.usuario = state.usuario;
+
   }
   //accion al cargar la pagina 
   ngOnInit() {
-    
+    this.nombreUsuario = this.usuarioService.getNombreUsuario();
   }
   //Accion una vez cargo la pagina
   ngAfterContentInit(){
