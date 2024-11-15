@@ -43,7 +43,11 @@ const routes: Routes = [
   {
     path: '**',
     loadChildren: () => import('./error/error.module').then(m => m.ErrorPageModule)
+  },  {
+    path: 'mapa',
+    loadChildren: () => import('./Access/mapa/mapa.module').then( m => m.MapaPageModule)
   },
+
   
 
   
