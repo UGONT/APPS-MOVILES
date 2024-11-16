@@ -37,4 +37,5 @@
 @import "@ionic/angular/css/palettes/dark.system.css";
 
 /* custom scss */
-@import "./theme/custom.scss"
+@import "./theme/custom.scss";
+@import "mapbox-gl/dist/mapbox-gl.css";

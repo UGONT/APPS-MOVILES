@@ -11,7 +11,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { provideHttpClient } from '@angular/common/http';
-import { GoogleMap } from '@ionic-native/google-maps';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +24,7 @@ import { GoogleMap } from '@ionic-native/google-maps';
       
     }
   ),AppRoutingModule, BrowserAnimationsModule,IonicStorageModule.forRoot()],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideAnimationsAsync(),provideHttpClient(), GoogleMap],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideAnimationsAsync(),provideHttpClient()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

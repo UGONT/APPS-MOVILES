@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class ApiControllerService {
 
-  apiURL = "http://127.0.0.1:8000/api/"
+  apiURL = "https://apps-moviles.onrender.com/api/"
+  /* apiURL = "http://127.0.0.1:8000/api/" */
   /* apiURL = "http://localhost:3000/" */
   
   constructor(private http: HttpClient) {
