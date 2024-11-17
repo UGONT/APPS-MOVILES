@@ -32,7 +32,6 @@
     "@capacitor/status-bar": "6.0.1",
     "@ionic/angular": "^8.0.0",
     "@ionic/storage-angular": "^4.0.0",
-    "cordova-plugin-googlemaps": "github:mapsplugin/cordova-plugin-googlemaps#multiple_maps",
     "ionicons": "^7.0.0",
     "json-server": "^1.0.0-beta.3",
     "mapbox-gl": "^3.8.0",

@@ -68,7 +68,7 @@ export class MantenedorPage implements OnInit {
         console.log(this.users)
       },
       (error) => {
-        console.log("ERROR en la llamada")
+        console.log("ERROR en la llamada", error)
       }
     )
   }
