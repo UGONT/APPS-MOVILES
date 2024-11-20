@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
 import { ApiControllerService } from './api-controller.service';
+import { UsuarioService } from './usuario.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class AuthentificatorService {
   estado: boolean;
   constructor(
     private storage: StorageService,
-    private api: ApiControllerService
+    private api: ApiControllerService,
+    private usuarioService: UsuarioService
   ) {
     this.estado = false;
   }
@@ -33,6 +35,8 @@ export class AuthentificatorService {
     ) */
     await this.storage.get(user).then((val) => {
       if(val.password == pass) {
+        this.usuarioService.setCorreoUsuario(val.email)
+        this.usuarioService.setNombreUsuario(val.user)
         console.log('Usuario encontrado');
         this.estado = true;
       }else {

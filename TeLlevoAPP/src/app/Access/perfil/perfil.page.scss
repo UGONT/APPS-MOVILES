@@ -25,4 +25,21 @@
     padding: 16px; // Espacio alrededor del contenido
     --background: rgba(1,44,86,255);  // Color de fondo azul
     height: 100%; // Asegura que ocupe toda la altura
+}
+
+.perfil-header {
+    margin-top: 20px;
+  }
+  .perfil-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+  }
+  .perfil-nombre {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  .perfil-botones ion-button {
+    margin-top: 10px;
   }
