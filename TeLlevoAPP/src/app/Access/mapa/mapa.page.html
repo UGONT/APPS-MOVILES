@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Mapa</ion-title>
   </ion-toolbar>
@@ -7,4 +7,19 @@
 <ion-content [fullscreen]="true">
   <div #mapElement id="map" style="width: 100%; height: 100%;"></div>
 
+</ion-content> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mapa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="map" style="height: 80vh;"></div>
+  <div style="padding: 10px;">
+    <ion-input id="start" placeholder="Punto de partida"></ion-input>
+    <ion-input id="end" placeholder="Destino"></ion-input>
+    <ion-button expand="block" (click)="generateRoute()">Generar Ruta</ion-button>
+  </div>
 </ion-content>
