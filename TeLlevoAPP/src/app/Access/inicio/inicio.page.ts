@@ -23,8 +23,8 @@ export class InicioPage implements OnInit {
   ) { }
 
   user = {
-    "usuario": "hugo",
-    "pass": "hugo123#"
+    "usuario": "luis",
+    "pass": "luis1234."
   }
   cambiarBarra() {
     this.barra = !this.barra;
@@ -35,6 +35,7 @@ export class InicioPage implements OnInit {
     if (await this.auth.loginBDD(this.user.usuario, this.user.pass)) {
       this.mensaje = 'Inicio exitoso';
       this.usuarioService.setNombreUsuario(this.user.usuario);
+      
       this.cambiarBarra();
       setTimeout(() => {
         this.router.navigate(['/tabs'],);

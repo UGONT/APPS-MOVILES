@@ -9,11 +9,20 @@ export class UsuarioService {
   
   private nombreUsuario: string = '';
 
+  private correoUsuario: string='';
+
   setNombreUsuario(nombre: string) {
     this.nombreUsuario = nombre;
   }
 
   getNombreUsuario(): string {
     return this.nombreUsuario;
+  }
+
+  setCorreoUsuario(correo: string) {
+    this.correoUsuario = correo;
+  }
+  getCorreoUsuario(): string {
+    return this.correoUsuario;
   }
 }

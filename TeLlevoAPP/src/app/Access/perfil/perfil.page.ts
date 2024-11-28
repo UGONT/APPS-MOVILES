@@ -9,19 +9,28 @@ import { UsuarioService } from 'src/app/Servicios/usuario.service';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-
   nombreUsuario = '';
+  nombreCompleto = 'Luis Rodríguez';
+  correo = '';
+  telefono = '+56912345678';
+  tieneVehiculo = false;
+  marcaVehiculo = '';
+  matricula = '';
+  editandoDatos = false;
+
   constructor(
     private router: Router,
-    private auth : AuthentificatorService,
+    private auth: AuthentificatorService,
     private usuarioService: UsuarioService
-
-  ) { 
-    
-  }
+  ) {}
 
   ngOnInit() {
     this.nombreUsuario = this.usuarioService.getNombreUsuario();
+    this.correo = this.usuarioService.getCorreoUsuario();
+  }
+
+  toggleEdicion() {
+    this.editandoDatos = !this.editandoDatos;
   }
 
   logout() {
