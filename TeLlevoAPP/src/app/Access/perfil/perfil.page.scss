@@ -4,7 +4,9 @@
     display: flex;
     justify-content: center; /* Centra horizontalmente */
 }
-
+h2{
+  color: rgba(251,253,242,255);
+}
 .btn-cerrar {
     --background: red; /* Color de fondo del botón */
     --color: white; /* Color del texto del botón */

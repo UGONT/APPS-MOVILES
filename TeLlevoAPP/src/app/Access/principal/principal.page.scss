@@ -41,26 +41,10 @@
     --background: rgb(200, 185, 20);
 }
 
- /* .animar-borde {
-    width: 410px; 
-    height: 210px;
-    border-radius: 10%;
-    border: 5px solid red;
-    display: inline-block; 
-    animation: cambiarColor 3s infinite; 
-}
-
-@keyframes cambiarColor {
-    0% {
-        border-color: red;
-    }
-    33% {
-        border-color: blue;
-    }
-    66% {
-        border-color: green;
-    }
-    100% {
-        border-color: red;
-    }
-} */
+#boton {
+    text-align: center;
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    top: 55%;
+  }

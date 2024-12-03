@@ -44,6 +44,11 @@ const routes: Routes = [
     path: '**',
     loadChildren: () => import('./error/error.module').then(m => m.ErrorPageModule)
   },
+  {
+    path: 'actividad',
+    loadChildren: () => import('./Access/actividad/actividad.module').then( m => m.ActividadPageModule)
+  },
+
   
 
   

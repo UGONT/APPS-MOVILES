@@ -18,7 +18,7 @@ const routes: Routes = [
       },
       {
         path: 'actividad',
-        loadChildren: () => import('../perfil/perfil.module').then(m => m.PerfilPageModule)
+        loadChildren: () => import('../actividad/actividad.module').then(m => m.ActividadPageModule)
       },
       {
         path: 'perfil',

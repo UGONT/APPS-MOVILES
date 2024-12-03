@@ -1,13 +1,13 @@
 <div class="ion-page" id="main-content">
 
-  
   <ion-content class="ion-padding fondo">
     <h4 class="wel-usuario">Bienvenido {{nombreUsuario}}!</h4>
-    <ion-searchbar show-cancel-button="focus" placeholder="¿A dónde vas?"></ion-searchbar>
-
-    <ion-button [@pulse]="taAnimao ? 'true' : 'false'" (click)="animacionBtn()" expand="block" class="btm-empezar">
-      Empezar el viaje!
-    </ion-button>
+    <div id="boton">
+      <ion-button  [@pulse]="taAnimao ? 'true' : 'false'" (click)="animacionBtn()"  expand="block" class="btm-empezar">
+        Empezar el viaje!
+      
+      </ion-button>
+    </div>
   </ion-content>
 </div>
 
