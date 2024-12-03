@@ -17,16 +17,16 @@ export class MapaPage implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    // Configurar la clave de Mapbox
+    
     (mapboxgl as any).accessToken = 'pk.eyJ1IjoiZG9udWdvIiwiYSI6ImNtM2ppNnJ0MjAzcmMyaXBybGJqZjNsOGIifQ.SVc0f2cIc1hr2rfL70bZfQ';
 
-    // Obtener la ubicación actual
+    // Obtener la ubicacion actual
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.currentLocation = [position.coords.longitude, position.coords.latitude];
         this.loadMap(this.currentLocation);
       },
-      (error) => console.error('Error obteniendo ubicación', error),
+      (error) => console.error('Error obteniendo ubicacion', error),
       { enableHighAccuracy: true }
     );
   }
@@ -42,25 +42,11 @@ export class MapaPage implements OnInit {
     // Agregar marcador para la ubicación actual
     new mapboxgl.Marker().setLngLat(center).addTo(this.map);
 
-    // Crear el Geocoder para autocompletar direcciones
-    const geocoder = new MapboxGeocoder({
-      accessToken: (mapboxgl as any).accessToken,
-      marker: false,  // Deshabilitar el marcador del geocodificador
-      mapboxgl: mapboxgl
-    });
-
-    // Añadir el Geocoder al mapa
-    this.map.addControl(geocoder);
-
-    // Capturar el evento cuando el usuario selecciona una dirección
-    geocoder.on('result', (event) => {
-      const place = event.result.center; // Las coordenadas seleccionadas
-      this.generateRoute();
-    });
+   
   }
+
+
   /* GENERAR RUTAS WAAAAAAAAAAAAA*/
-
-
 
   async generateRoute() {
     // Usar la ubicación actual como punto de partida

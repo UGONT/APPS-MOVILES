@@ -23,8 +23,8 @@ export class InicioPage implements OnInit {
   ) { }
 
   user = {
-    "usuario": "luis",
-    "pass": "luis1234."
+    "usuario": "",
+    "pass": ""
   }
   cambiarBarra() {
     this.barra = !this.barra;
@@ -41,7 +41,7 @@ export class InicioPage implements OnInit {
         this.router.navigate(['/tabs'],);
         this.mensaje = "";
         this.cambiarBarra();
-      }, 1);
+      },2600, 1);
 
     } else {
       this.mensaje = "Credenciales incorrectas.";

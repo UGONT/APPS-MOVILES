@@ -47,8 +47,9 @@ export class PrincipalPage implements OnInit {
     this.taAnimao = true;
     setTimeout(() => {
       this.taAnimao = false;
+      this.router.navigate(['/tabs/mapa']); 
     }, 400); // Duracion total de la animacion (200ms + 200ms)
-    this.router.navigate(['/tabs/mapa']); 
+    
   }
 
   logout() {
